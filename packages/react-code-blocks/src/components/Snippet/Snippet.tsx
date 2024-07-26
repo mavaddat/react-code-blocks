@@ -19,23 +19,21 @@ const SnippetWrapper = styled.div<
     style: any;
   }
 >`
-   {
     position: relative;
-    width: ${({ width }) => width};
+    width: ${({ width }: any) => !!width ? width : 'auto'};
     max-width: 100%;
     padding: 8pt;
     padding-right: calc(2 * 16pt);
-    color: ${({ style }) => style.color};
-    background-color: ${({ style }) => style.bgColor};
-    border: 1px solid ${({ style }) => style.border};
+    color: ${({ style }: any) => style.color};
+    background-color: ${({ style }: any) => style.bgColor};
+    border: 1px solid ${({ style }: any) => style.border};
     border-radius: 5px;
-  }
   pre {
     margin: 0;
     padding: 0;
     border: none;
     background-color: transparent;
-    color: ${({ style }) => style.color};
+    color: ${({ style }: any) => style.color};
     font-size: 0.8125rem;
   }
   pre::before {
@@ -53,7 +51,7 @@ const SnippetWrapper = styled.div<
     right: 0;
     top: -2px;
     transform: translateY(50%);
-    background-color: ${({ style }) => style.bgColor};
+    background-color: ${({ style }: any) => style.bgColor};
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +95,7 @@ const Snippet: React.FC<React.PropsWithChildren<SnippetProps>> = ({
   const ref = useRef<HTMLPreElement>(null);
   const isMultiLine = text && Array.isArray(text);
   const theme = useContext(ThemeContext);
-  const style = useMemo(() => getStyles(theme), [theme]);
+  const style = useMemo(() => !!theme && getStyles(theme), [theme]);
   const showCopyIcon = useMemo(() => copyType !== 'prevent', [copyType]);
   const childText = useMemo<string | undefined | null>(() => {
     if (isMultiLine) return textArrayToString(text as string[]);

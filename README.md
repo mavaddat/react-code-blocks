@@ -26,13 +26,12 @@
 
 > React components for rendering code snippets with syntax highlighting
 
-> **BREAKING CHANGES**: `VERSION >= 0.0.8-alpha` now requires a nodejs version >= 12
+> **BREAKING CHANGES**: `VERSION >= ^0.1.0` has not been tested with Node 14 or lower
 
 - [Background](#background)
-  - [✨ Demo](#-demo)
+  - [✨ Storybook](#-storybook)
 - [Install](#install)
 - [Usage](#usage)
-- [Using in Gatsby and MDX](MDX.md)
 - [Components](#components)
   - [CodeBlock](#codeblock)
     - [Props](#props)
@@ -47,23 +46,15 @@
 
 ## Background
 
-Initially, this started as a small project looking to modify [Atlaskit's]() Code Block component to support more languages (i.e `graphql`, `reasonml`, etc). It then rapidly evolved into a **never-ending rabbithole** which ended up with support for themes (i.e railscast, darcula, monokai, etc), customizable styles, and copy functionality too!
+Initially, this started as a small project looking to modify [Atlaskit's]() Code Block component to support more languages (i.e `graphql`, `reasonml`, etc). It then rapidly evolved into a **never-ending rabbithole** which ended up with support for themes (i.e railscast, darcula, monokai, etc), customizable styles, and copy functionality too. Contributions are welcome via PRs and issues.
 
-I don't plan on keeping this updated unless people are looking to actually use it. So don't be shy! Feel free to post an [issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue) or a [pr](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
-### ✨ [Demo](https://react-code-blocks.netlify.com/)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a2a9f006-efd5-476f-ade6-11cde1ddc11e/deploy-status)](https://app.netlify.com/sites/react-code-blocks/deploys)
+### ✨ [Storybook](https://react-code-blocks.vercel.app/)
 
 [![Check out react-code-blocks](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-code-blocks-xgjrr?fontsize=14)
 
 ## Install
 
-Install `react-code-blocks` via `yarn` or `npm`
-
-```sh
-yarn add react-code-blocks
-```
+Install `react-code-blocks`
 
 ```sh
 npm i react-code-blocks
@@ -78,14 +69,20 @@ import { CopyBlock } from "react-code-blocks";
 ```
 
 ```js
+
+
 function MyCodeComponent(props) {
+  const copyBlockProps = {
+    text: props.code,
+    language: props.language,
+    showLineNumbers: props.showLineNumbers,
+    startingLineNumber: props.startingLineNumber,
+    wrapLines: true,
+  };
+
   return (
     <CopyBlock
-      text={props.code}
-      language={props.language}
-      showLineNumbers={props.showLineNumbers}
-      startingLineNumber={props.startingLineNumber}
-      wrapLines
+      {...copyBlockProps}
     />
   );
 }
@@ -175,7 +172,7 @@ If you're looking for some more maintained solutions, I'd suggest the following:
 - [`react-live`](https://github.com/FormidableLabs/react-live): A flexible playground for live editing React components by @FormidableLabs.
 - [`@atlaskit/code`](https://atlaskit.atlassian.com/docs/getting-started): Renders inline code snippets and code blocks
   - Original inspiration for this project kit for this project
-- [`carbon-components-react`](http://react.carbondesignsystem.com/?path=/story/codesnippet--inline): Check out their `<CodeSnippet>` component which supports multi-line, single-line, and inline snippets along with added copying functionality.
+- [`carbon-components-react`](iframe.html?id=components-codesnippet--inline): Check out their `<CodeSnippet>` component which supports multi-line, single-line, and inline snippets along with added copying functionality.
 
 > Feel free to add any other alternative packages here! :smile:
 
@@ -207,10 +204,10 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
 
 ## Author
 
-<div style="display:grid">
-<img src="https://avatars3.githubusercontent.com/u/15880596?s=460&v=4" width="175px"/>
-<img src="packages/assets/rajinwonderland.png" height="175px" />
-</div>
+<!-- <div style="display:grid;"> -->
+<!-- <img src="https://avatars3.githubusercontent.com/u/15880596?s=460&v=4" height="100px"/> -->
+<img src="../assets/rajinwonderland.png" height="100px" />
+<!-- </div> --
 
 - Website: https://novvum.io
 - Twitter: [@rajinwonderland](https://twitter.com/rajinwonderland)

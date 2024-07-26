@@ -38,6 +38,8 @@
 - [Todos](#todos)
 - [Show your support](#show-your-support)
 - [Author](#author)
+- [Maintainer](#maintainer)
+- [Contributors ✨](#contributors-)
 
 ## Background
 
@@ -68,7 +70,7 @@ npm i react-code-blocks
 > Updated usage instructions can be found [here](https://react-code-blocks.rajinwonderland.vercel.app/)
 
 ```js
-import { CopyBlock } from "react-code-blocks";
+import { CopyBlock } from 'react-code-blocks';
 ```
 
 ```js
@@ -91,7 +93,7 @@ function MyCodeComponent(props) {
 A simple code block component
 
 ```js
-import { CodeBlock, dracula } from "react-code-blocks";
+import { CodeBlock, dracula } from 'react-code-blocks';
 
 function MyCoolCodeBlock({ code, language, showLineNumbers }) {
   return (
@@ -126,7 +128,7 @@ function MyCoolCodeBlock({ code, language, showLineNumbers }) {
 A code block component with a little copy button for copying a snippet.
 
 ```jsx
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula } from 'react-code-blocks';
 
 function MyCoolCodeBlock({ code, language, showLineNumbers }) {
   <CopyBlock
@@ -198,11 +200,40 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
 
 ## Author
 
-<div style="display:grid">
-<img src="https://avatars3.githubusercontent.com/u/15880596?s=460&v=4" width="175px"/>
-<img src="packages/assets/rajinwonderland.png" height="175px" />
-</div>
+<!-- <div style="display:grid;"> -->
+<!-- <img src="https://avatars3.githubusercontent.com/u/15880596?s=460&v=4" height="100px"/> -->
+<img src="../assets/rajinwonderland.png" height="100px" />
+<!-- </div> -->
 
-- Website: https://novvum.io
+- Website: [AreaHub](https://areahub.com)
 - Twitter: [@rajinwonderland](https://twitter.com/rajinwonderland)
 - Github: [@rajinwonderland](https://github.com/rajinwonderland)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://hishri.com"><img src="https://avatars.githubusercontent.com/u/10195215?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Taha HICHRI</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=tahaHichri" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/florpor"><img src="https://avatars.githubusercontent.com/u/1809093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>florpor</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/issues?q=author%3Aflorpor" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/HamadTheIronside"><img src="https://avatars.githubusercontent.com/u/31456990?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdollah Keshtkar</b></sub></a><br /><a href="#example-HamadTheIronside" title="Examples">💡</a> <a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=HamadTheIronside" title="Documentation">📖</a> <a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=HamadTheIronside" title="Code">💻</a></td>
+    <td align="center"><a href="https://lukasbals.com"><img src="https://avatars.githubusercontent.com/u/10163193?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lukas Bals</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=lukasbals" title="Code">💻</a></td>
+    <td align="center"><a href="https://bofeiwang.com"><img src="https://avatars.githubusercontent.com/u/34177142?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bobby Wang</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=bofeiw" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.mpeveler.com"><img src="https://avatars.githubusercontent.com/u/1845314?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthew Peveler</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=MasterOdin" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/daceynolan"><img src="https://avatars.githubusercontent.com/u/54158919?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dacey Nolan</b></sub></a><br /><a href="#example-daceynolan" title="Examples">💡</a> <a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=daceynolan" title="Documentation">📖</a> <a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=daceynolan" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/kevineaton603"><img src="https://avatars.githubusercontent.com/u/25751382?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kevin Eaton</b></sub></a><br /><a href="https://github.com/rajinwonderland/react-code-blocks/commits?author=kevineaton603" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

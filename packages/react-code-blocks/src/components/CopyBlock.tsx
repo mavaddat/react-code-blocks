@@ -1,40 +1,23 @@
 import React, { useState } from 'react';
 import Code from './Code';
-import CodeBlock from './CodeBlock';
+import CodeBlock, { CodeBlockProps } from './CodeBlock';
 import Copy from './CopyIcon';
 import styled from 'styled-components';
 import { Theme } from '../types';
 import useClipboard from '../hooks/use-clipboard';
 
-export interface CopyBlockProps {
-  /** A custom theme to be applied, implements the `CodeBlockTheme` interface. You can also pass pass a precomposed theme into here. For available themes. [See THEMES.md](https://github.com/rajinwonderland/react-code-blocks/blob/master/THEMES.md) */
-  theme: Theme;
-
-  /** The code to be formatted */
-  text: string;
-
-  /** If true, the component render a `CodeBlock` instead of a `Code` component */
-
-  codeBlock: boolean;
-
+export interface CopyBlockProps extends CodeBlockProps {
   /** This is a prop used internally by the `CopyBlock`'s button component to toggle the icon to a success icon */
-  copied: boolean;
-
-  /** If true, wrap long lines */
-  wrapLongLines: boolean;
-
+  copied?: boolean;
+  /** If true, the component render a `CodeBlock` instead of a `Code` component */
+  codeBlock?: boolean;
   /** The onCopy function is called if the copy icon is clicked. This enables you to add a custom message that the code block is copied. */
-  onCopy: Function,
-
-  /** The language in which the code is written. [See LANGUAGES.md](https://github.com/rajinwonderland/react-code-blocks/blob/master/LANGUAGES.md) */
-
-  language: string;
-  customStyle?: {};
-  /** I know it's lazy, but I'll extend the interfaces later */
-  [x: string]: any;
+  onCopy?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = styled.button<CopyBlockProps>`
+type CascadedProps = Partial<CopyBlockProps> & { theme: Theme };
+
+const Button = styled.button<CascadedProps>`
   position: absolute;
   top: 0.5em;
   right: 0.75em;
@@ -42,14 +25,14 @@ const Button = styled.button<CopyBlockProps>`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: ${p => p.theme.backgroundColor};
+  background: ${(p: CascadedProps) => p.theme.backgroundColor as string};
   margin-top: 0.15rem;
   border-radius: 0.25rem;
   max-height: 2rem;
   max-width: 2rem;
   padding: 0.25rem;
   &:hover {
-    opacity: ${p => (p.copied ? 1 : 0.5)};
+    opacity: ${(p: CascadedProps) => (p.copied ? 1 : 0.5)};
   }
   &:focus {
     outline: none;
@@ -61,11 +44,11 @@ const Button = styled.button<CopyBlockProps>`
   }
 `;
 
-const Snippet = styled.div<CopyBlockProps>`
+const Snippet = styled.div<CascadedProps>`
   position: relative;
-  background: ${p => p.theme.backgroundColor};
+  background: ${(p: CascadedProps) => p.theme.backgroundColor as string};
   border-radius: 0.25rem;
-  padding: ${p => (p.codeBlock ? `0.25rem 0.5rem 0.25rem 0.25rem` : `0.25rem`)};
+  padding: ${(p: CascadedProps) => (p.codeBlock ? `0.25rem 0.5rem 0.25rem 0.25rem` : `0.25rem`)};
 `;
 
 export default function CopyBlock({
@@ -74,13 +57,14 @@ export default function CopyBlock({
   codeBlock = false,
   customStyle = {},
   onCopy,
+  copied: startingCopied,
   ...rest
 }: CopyBlockProps) {
-  const [copied, toggleCopy] = useState(false);
+  const [copied, toggleCopy] = useState(!!startingCopied);
   const { copy } = useClipboard();
-  const handler = () => {
+  const handler = (event: React.MouseEvent<HTMLButtonElement>) => {
     copy(text);
-    onCopy ? onCopy() : toggleCopy(!copied);
+    onCopy ? onCopy(event) : toggleCopy(!copied);
   };
 
   return (
@@ -92,9 +76,9 @@ export default function CopyBlock({
         // @ts-ignore
         <Code text={text} theme={theme} {...rest} />
       )}
-      <Button type="button" onClick={handler} {...{ theme, copied }}>
+      <Button aria-label="Copy Code" type="button" onClick={handler} {...{ theme, copied }}>
         <Copy
-          color={copied ? theme.stringColor : theme.textColor}
+          color={copied ? theme?.stringColor : theme?.textColor}
           copied={copied}
           className="icon"
           size="16pt"
